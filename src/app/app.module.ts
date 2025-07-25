@@ -13,8 +13,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { FormsModule } from '@angular/forms';
-import { DropdownDirective } from './shared/dropdoown.directive';
-import { CollapseDirective } from './shared/collapse.directive';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import { CollapseDirective } from './shared/collapse.directive';
     RecipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    DropdownDirective,
-    CollapseDirective
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
