@@ -9,13 +9,12 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-xs-12">
-        <div class="dropdown" (click)="toggleDropdown($event)">
-            <button class="btn btn-primary dropdown-toggle" type="button"
-                    [attr.aria-expanded]="dropdownOpen">
+    <div class="col-xs-12" appDropdown>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button">
                 Manage Recipe
             </button>
-            <ul class="dropdown-menu" [class.show]="dropdownOpen">
+            <ul class="dropdown-menu">
                 <li><a href="#" class="dropdown-item">To Shopping List</a></li>
                 <li><a href="#" class="dropdown-item">Edit Recipe</a></li>
                 <li><a href="#" class="dropdown-item">Delete Recipe</a></li>
