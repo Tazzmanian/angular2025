@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -13,14 +15,18 @@ export class RecipeDetailComponent implements OnInit {
 
   dropdownOpen = false;
 
-  constructor() { }
+  constructor(private rs: RecipeService) { }
 
   ngOnInit(): void {
   }
 
-  toggleDropdown(event: MouseEvent) {
-    event.preventDefault();
-    this.dropdownOpen = !this.dropdownOpen;
+  // toggleDropdown(event: MouseEvent) {
+  //   event.preventDefault();
+  //   this.dropdownOpen = !this.dropdownOpen;
+  // }
+
+  addIngredients(ingrs: Recipe|undefined) {
+    this.rs.updateShoppingList(ingrs?.ingredients || []);
   }
 
 }
