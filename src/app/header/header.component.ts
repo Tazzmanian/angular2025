@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  dropdownOpen = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleDropdown(event: MouseEvent) {
+    event.preventDefault();
+    this.dropdownOpen = !this.dropdownOpen;
   }
 
 }
