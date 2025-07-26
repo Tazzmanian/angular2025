@@ -4,12 +4,16 @@ import { Subscription } from 'rxjs';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { RecipeItemComponent } from './recipe-item/recipe-item.component';
+import { RecipeEditComponent } from '../recipe-edit/recipe-edit.component';
+import { RecipeDetailComponent } from '../recipe-detail/recipe-detail.component';
 
 @Component({
     selector: 'app-recipe-list',
     templateUrl: './recipe-list.component.html',
     styleUrls: ['./recipe-list.component.css'],
-    standalone: false
+    imports: [RecipeItemComponent], // No standalone components in this file
+    standalone: true
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[];

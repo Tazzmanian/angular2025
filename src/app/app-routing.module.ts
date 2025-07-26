@@ -6,7 +6,7 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
-const routes: Routes = [
+export const ROUTES: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
   {path: 'shopping-list', component: ShoppingListComponent},
   {path: 'recipe', component: RecipesComponent, children: [
@@ -18,8 +18,8 @@ const routes: Routes = [
   {path: '**', redirectTo: '/', pathMatch: 'full'},
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes)],
+//   exports: [RouterModule]
+// })
+// export class AppRoutingModule { }

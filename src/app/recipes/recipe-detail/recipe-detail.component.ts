@@ -3,12 +3,14 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { DropdownDirective } from 'src/app/shared/dropdown.directive';
 
 @Component({
     selector: 'app-recipe-detail',
     templateUrl: './recipe-detail.component.html',
     styleUrls: ['./recipe-detail.component.css'],
-    standalone: false
+    standalone: true,
+    imports: [DropdownDirective]
 })
 export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;

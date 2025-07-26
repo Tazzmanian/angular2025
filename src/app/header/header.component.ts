@@ -1,10 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { DropdownDirective } from '../shared/dropdown.directive';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [RouterLink, DropdownDirective]
 })
 export class HeaderComponent implements OnInit {
     @Output()

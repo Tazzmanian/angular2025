@@ -2,12 +2,14 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Ingredient } from '../shared/ingredient';
 import { ShoppingListService } from './shopping-list.service';
 import { Subscription } from 'rxjs';
+import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 
 @Component({
     selector: 'app-shopping-list',
     templateUrl: './shopping-list.component.html',
     styleUrls: ['./shopping-list.component.scss'],
-    standalone: false
+    imports: [ShoppingEditComponent],
+    standalone: true
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
   
