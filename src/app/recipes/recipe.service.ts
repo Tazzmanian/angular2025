@@ -39,4 +39,8 @@ export class RecipeService {
     updateShoppingList(ingredients: Ingredient[]): void {
         this.sls.addIngredients(ingredients);
     }
+
+    getRecipe(name: string): Recipe {
+        return this.recipes.slice().filter(recipe => recipe.name === name)[0];
+    }
 }

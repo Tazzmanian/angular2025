@@ -1,12 +1,10 @@
-<app-header (pageChange)="contentChange($event)">Loading</app-header>
+<app-header>Loading</app-header>
 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <app-recipes *ngIf="content === 'recipe'">Loading...</app-recipes>
-            <app-shopping-list *ngIf="content === 'shopping'"></app-shopping-list>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>
 
-<router-outlet></router-outlet>

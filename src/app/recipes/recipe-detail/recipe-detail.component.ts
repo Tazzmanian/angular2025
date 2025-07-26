@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
 import { RecipeService } from '../recipe.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -10,14 +11,19 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeDetailComponent implements OnInit {
 
-  @Input('recipe')
   recipe: Recipe | undefined;
 
   dropdownOpen = false;
 
-  constructor(private rs: RecipeService) { }
+  constructor(private rs: RecipeService, 
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
+
+    this.route.params.subscribe((params: Params) => {
+      this.recipe = this.rs.getRecipe(params['name']);
+    });
   }
 
   // toggleDropdown(event: MouseEvent) {
@@ -27,6 +33,12 @@ export class RecipeDetailComponent implements OnInit {
 
   addIngredients(ingrs: Recipe|undefined) {
     this.rs.updateShoppingList(ingrs?.ingredients || []);
+  }
+
+  navigate() {
+    if (this.recipe) {
+      this.router.navigate(['edit'], { relativeTo: this.route });
+    }
   }
 
 }

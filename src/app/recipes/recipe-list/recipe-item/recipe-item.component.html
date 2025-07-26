@@ -1,8 +1,9 @@
 <a
-    href="#"
+    style="cursor: pointer;"
     class="list-group-item clearfix border my-1 rounded"
     *ngIf="!!recipe"
-    (click)="onSelected()"
+    [routerLink]="recipe.name"
+    routerLinkActive="active"
     >
     <div class="float-start">
         <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
