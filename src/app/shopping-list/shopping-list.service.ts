@@ -1,7 +1,10 @@
+import { Injectable } from "@angular/core";
 import { Ingredient } from "../shared/ingredient";
 import { Subject } from "rxjs";
 
-
+@Injectable({
+  providedIn: 'root'   
+})
 export class ShoppingListService {
 
     itemAdded = new Subject<Ingredient[]>();
@@ -12,8 +15,6 @@ export class ShoppingListService {
         new Ingredient('Tomatoes', 10),
         new Ingredient('Bananas', 3)
     ];
-
-    constructor() {}
 
     getIngredients(): Ingredient[] {
         return this.ingredients.slice(); // Return a copy of the ingredients array

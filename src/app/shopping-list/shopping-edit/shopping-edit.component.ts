@@ -2,17 +2,20 @@ import {
   Component,
   OnInit,
   OnDestroy,
-  ViewChild
+  ViewChild,
+  inject
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ShoppingListService } from '../shopping-list.service';
 import { Subscription } from 'rxjs';
 import { Ingredient } from 'src/app/shared/ingredient';
 
 @Component({
-  selector: 'app-shopping-edit',
-  templateUrl: './shopping-edit.component.html',
-  styleUrls: ['./shopping-edit.component.scss']
+    selector: 'app-shopping-edit',
+    templateUrl: './shopping-edit.component.html',
+    styleUrls: ['./shopping-edit.component.scss'],
+    imports: [FormsModule],
+    standalone: true
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('f', { static: false }) slForm: NgForm|undefined;
@@ -21,7 +24,8 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   editedItemIndex: number|undefined;
   editedItem: Ingredient|undefined;
 
-  constructor(private slService: ShoppingListService) { }
+  slService = inject(ShoppingListService);
+
 
   ngOnInit() {
     this.subscription = this.slService.startedEditing

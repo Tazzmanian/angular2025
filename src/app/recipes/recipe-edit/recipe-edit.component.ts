@@ -1,26 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { RecipeService } from '../recipe.service';
 
 @Component({
-  selector: 'app-recipe-edit',
-  templateUrl: './recipe-edit.component.html',
-  styleUrls: ['./recipe-edit.component.css']
+    selector: 'app-recipe-edit',
+    templateUrl: './recipe-edit.component.html',
+    styleUrls: ['./recipe-edit.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule] // No standalone components in this file
+
 })
 export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
 
+  route = inject(ActivatedRoute);
+  recipeService = inject(RecipeService);
+  router = inject(Router);
+
   get recipeControls() {
     return (this.recipeForm.get('ingredients') as FormArray).controls
-  }
-
-  constructor(private route: ActivatedRoute,
-              private recipeService: RecipeService,
-              private router: Router) {
   }
 
   ngOnInit() {
