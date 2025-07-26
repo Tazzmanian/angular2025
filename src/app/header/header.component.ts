@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, output, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DropdownDirective } from '../shared/dropdown.directive';
 
@@ -10,8 +10,7 @@ import { DropdownDirective } from '../shared/dropdown.directive';
     imports: [RouterLink, DropdownDirective]
 })
 export class HeaderComponent implements OnInit {
-    @Output()
-    pageChange = new EventEmitter<'recipe' | 'shopping'>();
+    pageChange = output<'recipe' | 'shopping'>();
 
     constructor() {}
 

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } from "@angular/core";
+import { Directive, ElementRef, HostListener, input, Renderer2 } from "@angular/core";
 
 @Directive({
     selector: '[appDropdown]',
@@ -6,7 +6,6 @@ import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } fr
 })
 export class DropdownDirective {
 
-    @Input() collapseTarget: string | undefined;
     isOpen = false;
     isCollapseOpen = false;
 

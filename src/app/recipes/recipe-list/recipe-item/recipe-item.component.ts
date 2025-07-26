@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 
 import { Recipe } from '../../recipe.model';
 import { RouterLink } from '@angular/router';
@@ -11,8 +11,8 @@ import { RouterLink } from '@angular/router';
     standalone: true
 })
 export class RecipeItemComponent implements OnInit {
-  @Input() recipe: Recipe;
-  @Input() index: number;
+  recipe = input<Recipe>();
+  index = input<number>();
 
   ngOnInit() {
   }
