@@ -1,10 +1,10 @@
-import { EventEmitter, Output } from "@angular/core";
 import { Ingredient } from "../shared/ingredient";
+import { Subject } from "rxjs";
 
 
 export class ShoppingListService {
 
-    itemAdded = new EventEmitter<Ingredient[]>();
+    itemAdded = new Subject<Ingredient[]>();
 
     private ingredients: Ingredient[] = [
         new Ingredient('Apples', 5),
@@ -29,7 +29,7 @@ export class ShoppingListService {
             this.ingredients.push(ingredient);
         }
         if (emit !== false) { // Emit the event unless explicitly set to false
-            this.itemAdded.emit(this.ingredients.slice()); // Emit a copy of the updated ingredients list
+            this.itemAdded.next(this.ingredients.slice()); // Emit a copy of the updated ingredients list
         }
     }
 
@@ -38,7 +38,7 @@ export class ShoppingListService {
             this.addIngredient(ingredient); // Use the existing method to handle duplicates
         }
 
-        this.itemAdded.emit(this.ingredients.slice()); // Emit a copy of the updated ingredients list
+        this.itemAdded.next(this.ingredients.slice()); // Emit a copy of the updated ingredients list
     }
 
     updateIngredient(index: number, newIngredient: Ingredient): void {
