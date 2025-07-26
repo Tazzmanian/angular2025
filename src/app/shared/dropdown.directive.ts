@@ -1,7 +1,9 @@
 import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } from "@angular/core";
 
 @Directive({
-  selector: '[appDropdown]' // Use this directive on elements that should have dropdown functionality
+    selector: '[appDropdown]' // Use this directive on elements that should have dropdown functionality
+    ,
+    standalone: false
 })
 export class DropdownDirective {
 
