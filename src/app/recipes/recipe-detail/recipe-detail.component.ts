@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Recipe } from '../recipe.model';
@@ -16,10 +16,9 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   id: number;
 
-  constructor(private recipeService: RecipeService,
-              private route: ActivatedRoute,
-              private router: Router) {
-  }
+  recipeService = inject(RecipeService);
+  route = inject(ActivatedRoute);
+  router = inject(Router);
 
   ngOnInit() {
     this.route.params
@@ -28,7 +27,6 @@ export class RecipeDetailComponent implements OnInit {
           this.id = +params['id'];
           this.recipe = this.recipeService.getRecipe(this.id);
           console.log(this.recipe);
-          
         }
       );
   }

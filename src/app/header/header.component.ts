@@ -12,8 +12,6 @@ import { DropdownDirective } from '../shared/dropdown.directive';
 export class HeaderComponent implements OnInit {
     pageChange = output<'recipe' | 'shopping'>();
 
-    constructor() {}
-
     ngOnInit(): void {}
 
 

@@ -11,8 +11,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class RecipesComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit() {
   }
 

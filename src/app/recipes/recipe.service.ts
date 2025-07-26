@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
 
 import { Recipe } from './recipe.model';
@@ -30,7 +30,7 @@ export class RecipeService {
       ])
   ];
 
-  constructor(private slService: ShoppingListService) {}
+  slService = inject(ShoppingListService);
 
   getRecipes() {
     return this.recipes.slice();

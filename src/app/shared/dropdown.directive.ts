@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, input, Renderer2 } from "@angular/core";
+import { Directive, ElementRef, HostListener, inject, input, Renderer2 } from "@angular/core";
 
 @Directive({
     selector: '[appDropdown]',
@@ -9,7 +9,8 @@ export class DropdownDirective {
     isOpen = false;
     isCollapseOpen = false;
 
-    constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+    elementRef = inject(ElementRef);
+    renderer = inject(Renderer2);  
 
     @HostListener('click', ['$event']) navToggler(event: Event) {
         console.log('Dropdown toggled');

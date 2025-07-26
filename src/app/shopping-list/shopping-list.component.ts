@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Ingredient } from '../shared/ingredient';
 import { ShoppingListService } from './shopping-list.service';
 import { Subscription } from 'rxjs';
@@ -15,8 +15,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   
     ingredients: Ingredient[] = [];
     ingredients$: Subscription = undefined!;
-    
-    constructor(private shoppingListService: ShoppingListService) { }
+
+    shoppingListService = inject(ShoppingListService);
     
     ngOnInit(): void {
         this.ingredients = this.shoppingListService.getIngredients();

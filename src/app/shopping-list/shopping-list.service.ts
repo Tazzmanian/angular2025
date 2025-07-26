@@ -16,8 +16,6 @@ export class ShoppingListService {
         new Ingredient('Bananas', 3)
     ];
 
-    constructor() {}
-
     getIngredients(): Ingredient[] {
         return this.ingredients.slice(); // Return a copy of the ingredients array
     }
