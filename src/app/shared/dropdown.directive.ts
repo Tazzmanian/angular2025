@@ -41,6 +41,14 @@ export class DropdownDirective {
             this.isCollapseOpen = !this.isCollapseOpen;
             const collapse = this.elementRef.nativeElement.querySelector('.navbar-collapse');
             if (this.isCollapseOpen) {
+                if (this.isOpen) {
+                    this.isOpen = false; // Close dropdown if it was open
+                    const dropdown = this.elementRef.nativeElement.querySelector('.dropdown');
+                    const dropdownMenu = this.elementRef.nativeElement.querySelector('.dropdown-menu');
+                    this.renderer.removeClass(dropdown, 'show');
+                    this.renderer.removeClass(dropdownMenu, 'show');
+                    this.renderer.setAttribute(target, 'aria-expanded', 'false');
+                }
                 this.renderer.addClass(collapse, 'show');
                 this.renderer.setAttribute(target, 'aria-expanded', 'true');
             } else {
@@ -51,17 +59,16 @@ export class DropdownDirective {
     }
 
     @HostListener('document:click', ['$event'])
-    close(event: Event) {
-        event.preventDefault();
-        
+    close(event: Event) {      
         if (!this.elementRef.nativeElement.contains(event.target)) { 
-            this.closeDropdown();
-            this.closeCollapseDropdown();
+            this.closeDropdown(event);
+            this.closeCollapseDropdown(event);
         }
     }
 
-    closeDropdown() {
+    closeDropdown(event: Event) {
         if (this.isOpen) {
+            event.preventDefault(); // Prevent default action of the click event
             this.isOpen = false;
             const dropdown = this.elementRef.nativeElement.querySelector('.dropdown');
             const dropdownMenu = this.elementRef.nativeElement.querySelector('.dropdown-menu');
@@ -74,8 +81,9 @@ export class DropdownDirective {
         }
     }
 
-    closeCollapseDropdown() {
+    closeCollapseDropdown(event: Event) {
         if (this.isCollapseOpen) {
+            event.preventDefault(); // Prevent default action of the click event
             this.isCollapseOpen = false;
             const collapse = this.elementRef.nativeElement.querySelector('.navbar-collapse');
             const toggler = this.elementRef.nativeElement.querySelector('.navbar-toggler');
